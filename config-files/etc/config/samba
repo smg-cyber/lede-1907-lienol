@@ -1,0 +1,18 @@
+config samba
+	option 'name'			'LEDE'
+	option 'workgroup'		'WORKGROUP'
+	option 'description'		'LEDE'
+	option 'homes'			'1'
+
+
+
+config sambashare
+	option auto '1'
+	option name '/boot'
+	option path '/boot'
+	option read_only 'no'
+	option guest_ok 'yes'
+	option create_mask '0666'
+	option dir_mask '0777'
+	option device 'sda1'
+	option browseable 'yes'
