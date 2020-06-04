@@ -1,0 +1,18 @@
+config samba
+	option workgroup 'WORKGROUP'
+	option charset 'UTF-8'
+	option homes '0'
+	option macos '0'
+	option name 'LEDE'
+	option description 'Samba on LEDE'
+	
+config sambashare
+	option auto '1'
+	option name '/boot'
+	option path '/boot'
+	option read_only 'no'
+	option guest_ok 'yes'
+	option create_mask '0666'
+	option dir_mask '0777'
+	option device 'sda1'
+	option browseable 'yes'
