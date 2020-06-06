@@ -16,7 +16,6 @@ rm -Rf package/lean/luci-app-ssr-plus
 rm -Rf package/lean/luci-app-ssr-plus  
 #bcm27xx-userland为树莓派专用，需要移除
 rm -Rf package/utils/bcm27xx-userland
-rm -Rf feeds/packages/libs/openldap
 cp -Rf ../diy-lean/* ./
 sed -i 's/OpenWrt/LedeWrt Lite/g' package/lean/default-settings/files/zzz-default-settings
 rm -Rf package/my/luci-app-koolproxyR
