@@ -27,6 +27,8 @@ rm -Rf package/my/luci-app-koolproxyR
 #sed -i 's/'OpenWrt'/'LEDE'/g' package/base-files/files/bin/config_generate
 # 关闭禁止解析IPv6 DNS 记录
 sed -i '/option filter_aaaa 1/d' package/network/services/dnsmasq/files/dhcp.conf
+#使用smartdns是需要将dhcp里的dns缓存设置为0.
+sed -i '/option noresolv '1'/a option cachesize '0'' package/network/services/dnsmasq/files/dhcp.conf
 #修改默认主题
 #sed -i '/lang=zh_cn/i uci set luci.main.mediaurlbase=/luci-static/argon' package/lean/default-settings/files/zzz-default-settings
 #删除默认密码
