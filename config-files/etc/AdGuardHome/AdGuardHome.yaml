@@ -1,5 +1,5 @@
 bind_host: 192.168.168.1
-bind_port: 3003
+bind_port: 3333
 users: []
 language: zh-cn
 rlimit_nofile: 61500
