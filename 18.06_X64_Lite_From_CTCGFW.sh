@@ -18,10 +18,9 @@ rm -Rf package/lean/luci-app-ssr-plus
 #rm -Rf package/lienol/luci-app-timewol
 #rm -Rf package/lienol/luci-app-weburl
 #rm -Rf package/lienol/luci-app-webrestriction
-
 cp -Rf ../diy-lean/* ./
 sed -i 's/OpenWrt/LedeWrt Lite/g' package/lean/default-settings/files/zzz-default-settings
-rm -Rf package/ctcgfw/luci-app-koolproxyR
+rm -Rf package/my/luci-app-koolproxyR
 # 修改默认IP为192.168.168.1
 #sed -i 's/192.168.1.1/192.168.168.1/g' package/base-files/files/bin/config_generate
 #修改主机名
@@ -43,11 +42,11 @@ sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1806-Lite-/g' incl
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git  package/luci-app-adguardhome
 git clone https://github.com/ledewrt/luci-app-eqos.git  package/luci-app-eqos
 git clone https://github.com/jefferymvp/luci-app-koolproxyR.git  package/luci-app-koolproxyR
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+#git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+#git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
+#git clone -b lede https://github.com/pymumu/luci-app-smartdns  package/luci-app-smartdns
 #git clone https://github.com/ledewrt/luci-app-control-mia.git package/luci-app-control-mia
-#git clone https://github.com/ledewrt/luci-app-control-timewol.git package/luci-app-control-timewol
 #git clone https://github.com/ledewrt/luci-app-control-webrestriction.git package/luci-app-control-webrestriction
 #git clone https://github.com/ledewrt/luci-app-control-weburl.git package/luci-app-control-weburl
 ./scripts/feeds update -a
