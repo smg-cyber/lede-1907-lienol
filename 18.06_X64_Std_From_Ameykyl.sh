@@ -13,10 +13,8 @@
 #添加固件版本描述
 rm -Rf package/lean/default-settings/files/zzz-default-settings
 rm -Rf package/lean/luci-app-ssr-plus
-rm -Rf package/lean/luci-app-ssr-plus  
 #bcm27xx-userland为树莓派专用，需要移除
 rm -Rf package/utils/bcm27xx-userland
-rm -Rf feeds/packages/libs/openldap
 #rm -Rf package/ctcgfw/open-app-filter
 cp -Rf ../diy-lean/* ./
 sed -i 's/OpenWrt/LedeWrt Standard/g' package/lean/default-settings/files/zzz-default-settings
