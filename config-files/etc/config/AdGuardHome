@@ -1,6 +1,6 @@
 config AdGuardHome 'AdGuardHome'
 	option enabled '1'
-	option httpport '3333'
+	option httpport '3001'
 	option redirect 'dnsmasq-upstream'
 	option configpath '/etc/AdGuardHome.yaml'
 	option workdir '/usr/bin/AdGuardHome'
