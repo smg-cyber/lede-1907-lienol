@@ -18,7 +18,7 @@ on:
   push:
     # 文件改变才会触发
        paths:
-        - 'diy-lean/package/lean/default-settings/files/zzz-default-settings'
+        - 'diy-lean/package/lean/default-settings/files/zzz-default-settings9'
   # 分支master提交时触发
      # branches:
      #  - master     
