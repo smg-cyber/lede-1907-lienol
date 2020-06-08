@@ -12,7 +12,7 @@
 # https://ledewrt.com
 #=================================================
 
-name:  18.06_X64_Std_From_CTCGFW_Firmware
+name:  18.06_X64_Plus_From_CTCGFW_Firmware
 
 on: 
   push:
@@ -36,10 +36,10 @@ env:
   Repo_Url: https://github.com/project-openwrt/openwrt
    #Repo_Branch: 18.06-kernel5.4
   Repo_Branch: openwrt-18.06
-  Firmware_Name: LEDE_1806_X64_Std_From_CTCGFW
+  Firmware_Name: LEDE_1806_X64_Plus_From_CTCGFW
   Config_Files: config-files
-  Config_system: 18.06_X64_Std_From_CTCGFW.config
-  DIY_SH: 18.06_X64_Std_From_CTCGFW.sh
+  Config_system: 18.06_X64_Plus_From_CTCGFW.config
+  DIY_SH: 18.06_X64_Plus_From_CTCGFW.sh
   Free_Up_Disk: true
   SSH_Actions: false
   Upload_Firmware_Artifact: true  
