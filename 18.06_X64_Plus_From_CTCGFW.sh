@@ -17,6 +17,7 @@ rm -Rf package/ntlf9t/luci-app-eqos
 #bcm27xx-userland为树莓派专用，需要移除
 rm -Rf package/utils/bcm27xx-userland
 rm -Rf package/lienol/luci-app-webrestriction
+rm -Rf package/lienol/luci-app-weburl
 rm -Rf package/lienol/luci-app-timewol
 #rm -Rf package/ctcgfw/open-app-filter
 cp -Rf ../diy-lean/* ./
@@ -48,6 +49,7 @@ git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
 svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-webrestriction package/luci-app-control-webrestriction
 svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-timewol package/luci-app-control-timewol
+svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-weburl package/luci-app-control-weburl
 #git clone -b lede https://github.com/pymumu/luci-app-smartdns  package/luci-app-smartdns
 ./scripts/feeds update -a
 ./scripts/feeds install -a
