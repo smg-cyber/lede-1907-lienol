@@ -12,13 +12,13 @@
 # https://ledewrt.com
 #=================================================
 
-name:  18.06_X64_Lite_From_Ameykyl_Firmware
+name:  18.06_X64_Std_From_Ameykyl_Firmware
 
 on: 
   push:
     # 文件改变才会触发
        paths:
-        - 'diy-lean/package/lean/default-settings/files/zzz-default-settings9'
+        - 'diy-lean/package/lean/default-settings/files/zzz-default-settings'
   # 分支master提交时触发
      # branches:
      #  - master     
@@ -35,10 +35,10 @@ on:
 env:
   Repo_Url: https://github.com/project-openwrt/openwrt
   Repo_Branch: openwrt-18.06
-  Firmware_Name: LEDE_1806_X64_Lite_From_CTCGFW
+  Firmware_Name: LEDE_1806_X64_Std_From_CTCGFW
   Config_Files: config-files
-  Config_system: 18.06_X64_Lite_From_CTCGFW.config
-  DIY_SH: 18.06_X64_Lite_From_CTCGFW.sh
+  Config_system: 18.06_X64_Std_From_CTCGFW.config
+  DIY_SH: 18.06_X64_Std_From_CTCGFW.sh
   Free_Up_Disk: true
   SSH_Actions: false
   Upload_Firmware_Artifact: true  
