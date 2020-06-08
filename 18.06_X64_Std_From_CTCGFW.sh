@@ -14,6 +14,8 @@
 rm -Rf package/lean/default-settings/files/zzz-default-settings
 rm -Rf package/lean/luci-app-ssr-plus
 rm -Rf package/ntlf9t/luci-app-eqos
+#bcm27xx-userland为树莓派专用，需要移除
+rm -Rf package/utils/bcm27xx-userland
 #rm -Rf package/lienol/luci-app-control-webrestriction
 #rm -Rf package/ctcgfw/open-app-filter
 cp -Rf ../diy-lean/* ./
