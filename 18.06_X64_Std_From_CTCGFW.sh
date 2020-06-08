@@ -45,7 +45,7 @@ git clone https://github.com/jefferymvp/luci-app-koolproxyR.git  package/luci-ap
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
-svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-webrestriction package/luci-app-control-webrestriction
+#svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-webrestriction package/luci-app-control-webrestriction
 #git clone -b lede https://github.com/pymumu/luci-app-smartdns  package/luci-app-smartdns
 ./scripts/feeds update -a
 ./scripts/feeds install -a
