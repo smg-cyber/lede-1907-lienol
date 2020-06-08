@@ -1,3 +1,4 @@
+
 config dnsmasq
 	option domainneeded '1'
 	option localise_queries '1'
@@ -11,9 +12,9 @@ config dnsmasq
 	option leasefile '/tmp/dhcp.leases'
 	option nonwildcard '1'
 	option localservice '1'
-	list server '127.0.0.1#5335'
 	option noresolv '1'
 	option cachesize '0'
+	list server '127.0.0.1#5335'
 
 config dhcp 'lan'
 	option interface 'lan'
@@ -37,3 +38,10 @@ config odhcpd 'odhcpd'
 	option leasefile '/tmp/hosts/odhcpd'
 	option leasetrigger '/usr/sbin/odhcpd-update'
 	option loglevel '4'
+
+config srvhost
+	option srv '_vlmcs._tcp'
+	option target 'LEDE'
+	option port '1688'
+	option class '0'
+	option weight '100'
