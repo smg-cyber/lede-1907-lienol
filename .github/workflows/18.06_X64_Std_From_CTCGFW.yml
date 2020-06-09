@@ -119,6 +119,7 @@ jobs:
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 V=s
         echo "::set-output name=status::success"
+        
     - name: Get current date
       id: date
       run: echo "::set-output name=date::$(date +'%Y%m%d')"
@@ -145,7 +146,7 @@ jobs:
         cowurl=$(./transfer cow --block 2621440 -s --no-progress ${FIRMWARE})
         cowurl=$(echo $cowurl | grep -o -E "https[^ ]*")
         echo "::set-env name=COWURL::$cowurl"
-        echo "Download Link: ${{ env.EMOJI }} $cowurl 🚀"
+        echo "Download Link: $cowurl 🚀"
  
     - name: Upload firmware to WeTransfer
      # if: env.UPLOAD_FIRMWARE_TO_WETRANSFER == 'true'
@@ -155,7 +156,7 @@ jobs:
         wetrans=$(./transfer wet -s -p 16 --no-progress ${FIRMWARE})
         wetrans=$(echo $wetrans | grep -o -E "https[^ ]*")
         echo "::set-env name=WETRANS::$wetrans"
-        echo "Download Link: ${{ env.EMOJI }} $wetrans 🚀"
+        echo "Download Link: $wetrans 🚀"
         
     - name: Create release
       id: create_release
@@ -166,7 +167,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       with:
         tag_name: ${{ env.date }}_${{ env.DEVICE_NAME }}
-        release_name: ${{ env.date2 }} ${{ env.DEVICE_NAME }}
+        release_name: ${{ env.date }} ${{ env.DEVICE_NAME }}
         body: |
             墙内加速下载🔥:
             
