@@ -20,10 +20,7 @@ dns:
   ratelimit_whitelist: []
   refuse_any: false
   bootstrap_dns:
-  - 8.8.8.8:53
-  - 119.29.29.29:53
   - 127.0.0.1:6053
-  - 2606:4700:4700::1001:53
   all_servers: false
   edns_client_subnet: false
   aaaa_disabled: false
@@ -36,21 +33,6 @@ dns:
   cache_size: 2000000
   upstream_dns:
   - 127.0.0.1:6053
-  - tcp://208.67.222.222:5353
-  - tcp://59.51.78.210
-  - tls://1.1.1.1
-  - tls://dns.google
-  - tls://dns.quad9.net
-  - tcp://168.95.1.1
-  - tls://dns.rubyfish.cn
-  - tcp://202.175.82.46
-  - tcp://101.6.6.6:5353
-  - tcp://210.0.255.250
-  - tcp://203.198.7.66
-  - tcp://77.88.8.8
-  - tls://101.101.101.101
-  - tcp://203.198.7.66
-  - tcp://202.56.128.30
   filtering_enabled: true
   filters_update_interval: 24
   parental_enabled: false
