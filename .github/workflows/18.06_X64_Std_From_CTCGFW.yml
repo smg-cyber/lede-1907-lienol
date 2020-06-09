@@ -42,7 +42,7 @@ env:
   Free_Up_Disk: true
   SSH_Actions: false
   Upload_Firmware_Artifact: true  
-  Upload_Firmware_Release: false 
+  Upload_Firmware_Release: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -136,7 +136,7 @@ jobs:
         echo "::set-output name=status::success"
         
     - name: Upload firmware to cowtransfer
-     # if: env.UPLOAD_FIRMWARE_TO_COWTRANSFER == 'true'
+      #if: env.UPLOAD_FIRMWARE_TO_COWTRANSFER == 'true'
       continue-on-error: true
       run: |
         curl -fsSL git.io/file-transfer | sh
@@ -146,7 +146,7 @@ jobs:
         echo "Download Link: ${{ env.EMOJI }} $cowurl ${{ env.EMOJI }} 🚀"
  
     - name: Upload firmware to WeTransfer
-      #if: env.UPLOAD_FIRMWARE_TO_WETRANSFER == 'true'
+     # if: env.UPLOAD_FIRMWARE_TO_WETRANSFER == 'true'
       continue-on-error: true
       run: |
         curl -fsSL git.io/file-transfer | sh
@@ -158,7 +158,7 @@ jobs:
       id: create_release
       uses: actions/create-release@master
       continue-on-error: true
-      if: env.REPO_TOKEN && env.Upload_Firmware_Release == 'true'
+      if: env.REPO_TOKEN && env.UPLOAD_FIRMWARE_FOR_RELEASE == 'true'
       env:
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       with:
@@ -175,7 +175,6 @@ jobs:
         draft: false
         prerelease: false     
        
-        
     - name: Upload firmware to artifact
       uses: actions/upload-artifact@master
       if: steps.organize.outputs.status == 'success' && env.Upload_Firmware_Artifact == 'true'
@@ -183,12 +182,12 @@ jobs:
         name: ${{steps.date.outputs.date}}_${{ env.Firmware_Name }}
         path: ${{ env.firmware }}
          
-    - name: Upload firmware to release
-      uses: svenstaro/upload-release-action@v1-release
-      if: steps.compile.outputs.status == 'success' && env.Upload_Firmware_Release == 'true'
-      with:
-        repo_token: ${{ secrets.REPO_TOKEN }}
-        file: ${{ env.firmware }}/
-        tag: ${{steps.date.outputs.date}}
-        overwrite: true
-        file_glob: true
+    #- name: Upload firmware to release
+     # uses: svenstaro/upload-release-action@v1-release
+     # if: steps.compile.outputs.status == 'success' && env.Upload_Firmware_Release == 'true'
+     # with:
+     #   repo_token: ${{ secrets.REPO_TOKEN }}
+     #   file: ${{ env.firmware }}/
+     #   tag: ${{steps.date.outputs.date}}
+     #   overwrite: true
+       # file_glob: true
