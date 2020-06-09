@@ -43,7 +43,7 @@ env:
   Free_Up_Disk: true
   SSH_Actions: false
   Upload_Firmware_Artifact: true  
-  Upload_Firmware_Release: false 
+  Upload_Firmware_Release: true 
   TZ: Asia/Shanghai
 
 jobs:
@@ -183,12 +183,12 @@ jobs:
         name: ${{steps.date.outputs.date}}_${{ env.Firmware_Name }}
         path: ${{ env.firmware }}
          
-    - name: Upload firmware to release
-      uses: svenstaro/upload-release-action@v1-release
-      if: steps.compile.outputs.status == 'success' && env.Upload_Firmware_Release == 'true'
-      with:
-        repo_token: ${{ secrets.REPO_TOKEN }}
-        file: ${{ env.firmware }}/
-        tag: ${{steps.date.outputs.date}}
-        overwrite: true
-        file_glob: true
+    #- name: Upload firmware to release
+     # uses: svenstaro/upload-release-action@v1-release
+     # if: steps.compile.outputs.status == 'success' && env.Upload_Firmware_Release == 'true'
+     # with:
+     #   repo_token: ${{ secrets.REPO_TOKEN }}
+     #   file: ${{ env.firmware }}/
+     #   tag: ${{steps.date.outputs.date}}
+     #   overwrite: true
+       # file_glob: true
