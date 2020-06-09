@@ -136,3 +136,29 @@ config server
 	option ip '202.56.128.30'
 	option type 'tcp'
 
+config server
+	option name 'Cloudflare'
+	option ip '1.1.1.1'
+	option type 'tls'
+	option enabled '1'
+
+config server
+	option name 'opendns'
+	option ip '208.67.222.222'
+	option port '5353'
+	option type 'tcp'
+	option enabled '1'
+
+config server
+	option name 'google'
+	option ip 'dns.google'
+	option type 'tls'
+	option enabled '1'
+
+config server
+	option name 'IBM'
+	option ip 'dns.quad9.net'
+	option type 'tls'
+	option enabled '1'
+
+
