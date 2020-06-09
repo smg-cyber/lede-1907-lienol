@@ -184,7 +184,7 @@ jobs:
       if: steps.organize.outputs.status == 'success' && env.Upload_Firmware_Artifact == 'true'
       with:
         name: ${{steps.date.outputs.date}}_${{ env.Firmware_Name }}
-        path: ${{ env.firmware }}
+        path: ${{ env.FIRMWARE }}
          
     #- name: Upload firmware to release
      # uses: svenstaro/upload-release-action@v1-release
