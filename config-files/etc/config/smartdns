@@ -22,16 +22,34 @@ config smartdns
 	option tcp_server '0'
 
 config server
-	option name '腾讯'
+	option name '腾讯1'
 	option type 'udp'
 	option enabled '1'
 	option ip '119.29.29.29'
 	option blacklist_ip '1'
 config server
-	option name '阿里'
+	option name '腾讯2'
+	option type 'udp'
+	option enabled '1'
+	option ip '182.254.116.116'
+	option blacklist_ip '1'
+config server
+	option name '百度'
+	option type 'udp'
+	option enabled '1'
+	option ip '180.76.76.76'
+	option blacklist_ip '1'
+config server
+	option name '阿里1'
 	option type 'udp'
 	option enabled '1'
 	option ip '223.5.5.5'
+	option blacklist_ip '1'
+config server
+	option name '阿里2'
+	option type 'udp'
+	option enabled '1'
+	option ip '223.6.6.6'
 	option blacklist_ip '1'
 config server
 	option name '114'
