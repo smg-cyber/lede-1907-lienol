@@ -19,8 +19,10 @@ config smartdns
 	option seconddns_no_dualstack_selection '0'
 	option seconddns_no_cache '0'
 	option coredump '0'
+	option serve_expired '0'
+	option force_aaaa_soa '0'
 	option tcp_server '1'
-	
+
 config server
 	option enabled '1'
 	option type 'udp'
@@ -133,3 +135,4 @@ config server
 	option name '新加坡DNS'
 	option ip '202.56.128.30'
 	option type 'tcp'
+
