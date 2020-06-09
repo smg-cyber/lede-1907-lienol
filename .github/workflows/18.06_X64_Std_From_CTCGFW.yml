@@ -179,13 +179,6 @@ jobs:
         draft: false
         prerelease: false     
        
-    - name: Upload firmware to artifact
-      uses: actions/upload-artifact@master
-      if: steps.organize.outputs.status == 'success' && env.Upload_Firmware_Artifact == 'true'
-      with:
-        name: ${{steps.date.outputs.date}}_${{ env.Firmware_Name }}
-        path: ${{ env.FIRMWARE }}
-         
     #- name: Upload firmware to release
      # uses: svenstaro/upload-release-action@v1-release
      # if: steps.compile.outputs.status == 'success' && env.Upload_Firmware_Release == 'true'
@@ -195,3 +188,11 @@ jobs:
      #   tag: ${{steps.date.outputs.date}}
      #   overwrite: true
        # file_glob: true
+  
+    - name: Upload firmware to artifact
+      uses: actions/upload-artifact@master
+      if: steps.organize.outputs.status == 'success' && env.Upload_Firmware_Artifact == 'true'
+      with:
+        name: ${{steps.date.outputs.date}}_${{ env.Firmware_Name }}
+        path: ${{ env.FIRMWARE }}
+         
