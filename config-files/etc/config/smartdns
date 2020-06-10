@@ -2,8 +2,6 @@ config smartdns
 	option enabled '1'
 	option server_name 'smartdns'
 	option port '6053'
-	option ipv6_server '0'
-	option dualstack_ip_selection '0'
 	option prefetch_domain '1'
 	option redirect 'none'
 	option cache_size '5000'
@@ -19,9 +17,11 @@ config smartdns
 	option seconddns_no_dualstack_selection '0'
 	option seconddns_no_cache '0'
 	option coredump '0'
-	option serve_expired '0'
 	option force_aaaa_soa '0'
-	option tcp_server '0'
+	option tcp_server '1'
+	option ipv6_server '1'
+	option dualstack_ip_selection '1'
+	option serve_expired '1'
 
 config server
 	option enabled '1'
@@ -140,25 +140,24 @@ config server
 	option name 'Cloudflare'
 	option ip '1.1.1.1'
 	option type 'tls'
-	option enabled '1'
+	option enabled '0'
 
 config server
 	option name 'opendns'
 	option ip '208.67.222.222'
 	option port '5353'
 	option type 'tcp'
-	option enabled '1'
+	option enabled '0'
 
 config server
 	option name 'google'
 	option ip 'dns.google'
 	option type 'tls'
-	option enabled '1'
+	option enabled '0'
 
 config server
 	option name 'IBM'
 	option ip 'dns.quad9.net'
 	option type 'tls'
-	option enabled '1'
-
-
+	option enabled '0'
+	
