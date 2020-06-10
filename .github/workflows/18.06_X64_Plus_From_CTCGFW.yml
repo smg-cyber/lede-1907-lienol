@@ -167,8 +167,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       with:
-        tag_name: ${{ env.date }}_${{ env.DEVICE_NAME }}
-        release_name: ${{ env.date }} ${{ env.DEVICE_NAME }}
+        tag_name: ${{ env.date }}_${{ env.DEVICE_NAME }}_Plus
+        release_name: ${{ env.date }} ${{ env.DEVICE_NAME }}_Plus
         body: |
             墙内加速下载🔥:
             
