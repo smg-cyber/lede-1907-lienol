@@ -50,15 +50,13 @@ sed -i 's/\"network\"/\"control\"/g' /usr/lib/lua/luci/controller/appfilter.lua
 
 ln -sf /sbin/ip /usr/bin/ip
 
-sed -i 's#http://downloads.openwrt.org#https://mirrors.ustc.edu.cn/lede#g' /etc/opkg/distfeeds.conf
-sed -i 's#src/gz openwrt_luci https://mirrors.ustc.edu.cn/lede/snapshots#src/gz openwrt_luci https://mirrors.ustc.edu.cn/lede/releases/18.06.8#g' /etc/opkg/distfeeds.conf
-sed -i 's#src/gz openwrt_packages https://mirrors.ustc.edu.cn/lede/snapshots#src/gz openwrt_packages https://mirrors.ustc.edu.cn/lede/releases/18.06.8#g' /etc/opkg/distfeeds.conf
+sed -i 's#http://downloads.openwrt.org#https://mirrors.cloud.tencent.com/lede#g' /etc/opkg/distfeeds.conf
+sed -i '/openwrt_luci/ { s/snapshots/releases\/18.06.8/g; }'  /etc/opkg/distfeeds.conf
+sed -i '/openwrt_packages/ { s/snapshots/releases\/18.06.8/g; }'  /etc/opkg/distfeeds.conf
 sed -i "s/# //g" /etc/opkg/distfeeds.conf
-sed -i 's/http/https/g' /etc/opkg/distfeeds.conf
+
 sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 #sed -i 's|root:x:0:0:root:/root:/bin/ash|root:x:0:0:root:/root:/bin/bash|g' /etc/passwd
-
-sed -i "s/# //g" /etc/opkg/distfeeds.conf
 
 uci set dhcp.lan.ra='server'
 uci set dhcp.lan.dhcpv6='server'
@@ -74,26 +72,30 @@ sed -i '/option disabled/d' /etc/config/wireless
 sed -i '/set wireless.radio${devidx}.disabled/d' /lib/wifi/mac80211.sh
 
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
-echo "DISTRIB_REVISION='E20.6.9 From CTCGFW'Team'" >> /etc/openwrt_release
+echo "DISTRIB_REVISION='E20.6.9 From Lean Modified By CTCGFW '" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release
 
-sed -i 's/LuCI Master/LuCI 18.06-branch/g' /usr/lib/lua/luci/version.lua
-#sed -i '/luciversion/d' /usr/lib/lua/luci/version.lua
-#echo 'luciversion = "Mod20.04 by CTCGFW"' >> /usr/lib/lua/luci/version.lua
+sed -i 's/LuCI openwrt-18.06 branch/LuCI 18.06 by Lean/g' /usr/lib/lua/luci/version.lua
+sed -i '/luciversion/d' /usr/lib/lua/luci/version.lua
+echo 'luciversion = "Modified by CTCGFW"' >> /usr/lib/lua/luci/version.lua
 
-sed -i '/log-facility/d' /etc/dnsmasq.conf
+ssed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
-sed -i 's/cbi.submit\"] = true/cbi.submit\"] = \"1\"/g' /usr/lib/lu，’a/luci/dispatcher.lua
+sed -i 's/cbi.submit\"] = true/cbi.submit\"] = \"1\"/g' /usr/lib/lua/luci/dispatcher.lua
+
 echo 'hsts=0' > /root/.wgetrc
 
 rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
+
+mv /etc/openwrt_banner /etc/banner
 
 #禁用ipv6.
 #echo net.ipv6.conf.all.disable_ipv6=1 >> /etc/sysctl.conf
 #echo net.ipv6.conf.default.disable_ipv6=1 >> /etc/sysctl.conf
 #echo net.ipv6.conf.lo.disable_ipv6 = 1 >> /etc/sysctl.conf
 #echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+
 exit 0
