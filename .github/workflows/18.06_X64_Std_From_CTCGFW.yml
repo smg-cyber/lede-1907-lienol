@@ -98,8 +98,6 @@ jobs:
       run: |
           cd lede
           make defconfig
-          [ $(grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/') == generic ] && DEVICE_NAME=$(grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/CONFIG_TARGET_(.*)_DEVICE_.*=y/\1/') || DEVICE_NAME=$(grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/')
-          echo "::set-env name=DEVICE_NAME::$DEVICE_NAME"
         
     - name: SSH connection to Actions
       uses: P3TERX/debugger-action@master
@@ -124,8 +122,7 @@ jobs:
     - name: Get current date
       id: date
       run: |   
-        echo "::set-env name=date::$(date +'%m/%d_%Y_%H/%M')"
-        echo "::set-env name=date2::$(date +'%Y%m%d')"
+       echo "::set-env name=date::$(date +'%Y%m%d_%H/%M')"
       
     - name: Organize files and zip
       id: organize
@@ -169,8 +166,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       with:
-        tag_name: ${{ env.date }}_${{ env.DEVICE_NAME }}_Std
-        release_name: ${{ env.date2 }} ${{ env.DEVICE_NAME }} Std
+        tag_name: ${{ env.date }}_${{ env.Firmware_Name }}
+        release_name: ${{ env.date }} ${{ env.Firmware_Name }}
         body: |
             墙内加速下载🔥:
             
@@ -196,6 +193,6 @@ jobs:
       uses: actions/upload-artifact@master
       if: steps.organize.outputs.status == 'success' && env.Upload_Firmware_Artifact == 'true'
       with:
-        name: ${{ env.date2 }}_${{ env.Firmware_Name }}
+        name: ${{ env.date }}_${{ env.Firmware_Name }}
         path: ${{ env.FIRMWARE }}
          
