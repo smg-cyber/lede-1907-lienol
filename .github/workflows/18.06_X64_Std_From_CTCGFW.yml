@@ -12,7 +12,7 @@
 # https://ledewrt.com
 #=================================================
 
-name:  18.06_X64_Std_From_Ameykyl_Firmware
+name:  18.06_X64_Std_From_CTCGFW_Firmware
 
 on: 
   push:
