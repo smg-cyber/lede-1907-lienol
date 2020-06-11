@@ -13,7 +13,6 @@
 #=================================================
 
 name:  18.06_X64_Plus_From_CTCGFW_Firmware
-
 on: 
   push:
     # 文件改变才会触发
@@ -31,10 +30,9 @@ on:
 # 点击star才会触发    
   watch:
       types: [started]
-    
 env:
   Repo_Url: https://github.com/project-openwrt/openwrt
-   #Repo_Branch: 18.06-kernel5.4
+  #Repo_Branch: 18.06-kernel5.4
   Repo_Branch: openwrt-18.06
   Firmware_Name: LEDE_1806_X64_Plus_From_CTCGFW
   Config_Files: config-files
@@ -78,8 +76,10 @@ jobs:
        # sudo -E apt-get -q purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
        # sudo -E apt-get -qq autoremove --purge
        # sudo -E apt-get -qq clean
+       
     - name: Clone source code
       run: git clone --depth 1 $Repo_Url -b $Repo_Branch lede
+      
     - name: Update feeds
       run: cd lede && ./scripts/feeds update -a
 
