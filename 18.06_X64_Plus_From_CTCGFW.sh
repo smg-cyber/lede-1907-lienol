@@ -34,7 +34,11 @@ sed -i '/option filter_aaaa 1/d' package/network/services/dnsmasq/files/dhcp.con
 #删除默认密码
 #sed -i '/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./d' package/lean/default-settings/files/zzz-default-settings
 #修改opentomcat主题的标题
-sed -i 's/OpenWrt/LEDE/g' package/ctcgfw/luci-theme-opentomcat/luasrc/view/themes/opentomcat/header.htm
+#sed -i 's/OpenWrt/LEDE/g' package/ctcgfw/luci-theme-opentomcat/luasrc/view/themes/opentomcat/header.htm
+#克隆leo的
+rm -Rf package/ctcgfw/luci-theme-opentomcat
+git clone https://github.com/Leo-Jo-My/luci-theme-opentomato package/luci-theme-opentomato
+sed -i 's/OpenWrt/LEDE/g' package/luci-theme-opentomcat/files/templates/header.htm
 #添加img编译时间前缀。
 sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1806-Plus-/g' include/image.mk
 #选择编译内核。
