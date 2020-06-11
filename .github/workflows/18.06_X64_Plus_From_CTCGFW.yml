@@ -17,8 +17,8 @@ name:  18.06_X64_Plus_From_CTCGFW_Firmware
 on: 
   push:
     # 文件改变才会触发
-       paths:
-        - 'diy-lean/package/lean/default-settings/files/zzz-default-settings'
+      # paths:
+       # - 'diy-lean/package/lean/default-settings/files/zzz-default-settings'
   # 分支master提交时触发
      # branches:
      #  - master     
@@ -29,8 +29,8 @@ on:
   #schedule:
     #- cron: 0 16 * * 5
 # 点击star才会触发    
-   # watch:
-   # types: [started]
+  watch:
+      types: [started]
     
 env:
   Repo_Url: https://github.com/project-openwrt/openwrt
