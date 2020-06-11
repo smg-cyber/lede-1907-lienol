@@ -19,7 +19,7 @@ rm -Rf package/utils/bcm27xx-userland
 rm -Rf package/lienol/luci-app-webrestriction
 rm -Rf package/lienol/luci-app-weburl
 rm -Rf package/lienol/luci-app-timewol
-#rm -Rf package/ctcgfw/open-app-filter
+rm -Rf package/ctcgfw/luci-app-adguardhome
 cp -Rf ../diy-lean/* ./
 sed -i 's/OpenWrt/LedeWrt Plus/g' package/lean/default-settings/files/zzz-default-settings
 
@@ -48,6 +48,7 @@ sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1806-Plus-/g' incl
 #添加自定义插件1
 #git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git  package/luci-app-adguardhome
+git clone https://github.com/ledewrt/AdGuardHome.git package/luci-app-adguardhome
 git clone https://github.com/ledewrt/luci-app-eqos.git  package/luci-app-eqos
 git clone https://github.com/jefferymvp/luci-app-koolproxyR.git  package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
