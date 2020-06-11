@@ -29,8 +29,8 @@ on:
   #schedule:
     #- cron: 0 16 * * 5
 # 点击star才会触发    
-  watch:
-      types: [started]
+  #watch:
+     # types: [started]
     
 env:
   Repo_Url: https://github.com/project-openwrt/openwrt
@@ -43,7 +43,7 @@ env:
   Free_Up_Disk: true
   SSH_Actions: false
   Upload_Firmware_Artifact: true  
-  Upload_Firmware_Release: true
+  Upload_Firmware_Release: false
   TZ: Asia/Shanghai
 
 jobs:
@@ -179,15 +179,14 @@ jobs:
         draft: false
         prerelease: false     
        
-    #- name: Upload firmware to release
-     # uses: svenstaro/upload-release-action@v1-release
-     # if: steps.compile.outputs.status == 'success' && env.Upload_Firmware_Release == 'true'
-     # with:
-     #   repo_token: ${{ secrets.REPO_TOKEN }}
-     #   file: ${{ env.firmware }}/
-     #   tag: ${{ env.date }}
-     #   overwrite: true
-       # file_glob: true
+    #- name: Upload firmware for release
+    #  uses: csexton/release-asset-action@master
+     # continue-on-error: true
+     # if: env.REPO_TOKEN && env.Upload_Firmware_Release == 'true'
+     #  with:
+      #  pattern: "${{ env.FIRMWARE }}/*"
+     #   github-token: ${{ secrets.REPO_TOKEN }}
+      #  release-url: ${{ steps.create_release.outputs.upload_url }}
   
     - name: Upload firmware to artifact
       uses: actions/upload-artifact@master
