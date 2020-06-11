@@ -123,7 +123,9 @@ jobs:
         
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y%m%d')"
+      run: |   
+        echo "::set-env name=date::$(date +'%m/%d_%Y_%H/%M')"
+        echo "::set-env name=date2::$(date +'%Y%m%d')"
       
     - name: Organize files and zip
       id: organize
@@ -168,7 +170,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       with:
         tag_name: ${{ env.date }}_${{ env.DEVICE_NAME }}_Std
-        release_name: ${{ env.date }} ${{ env.DEVICE_NAME }}_Std
+        release_name: ${{ env.date2 }} ${{ env.DEVICE_NAME }} Std
         body: |
             墙内加速下载🔥:
             
@@ -194,6 +196,6 @@ jobs:
       uses: actions/upload-artifact@master
       if: steps.organize.outputs.status == 'success' && env.Upload_Firmware_Artifact == 'true'
       with:
-        name: ${{steps.date.outputs.date}}_${{ env.Firmware_Name }}
+        name: ${{ env.date2 }}_${{ env.Firmware_Name }}
         path: ${{ env.FIRMWARE }}
          
