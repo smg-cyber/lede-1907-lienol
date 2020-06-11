@@ -14,7 +14,7 @@
 
 name:  18.06_X64_Plus_From_CTCGFW_Firmware
 on: 
-  push:
+  #push:
     # 文件改变才会触发
       # paths:
        # - 'diy-lean/package/lean/default-settings/files/zzz-default-settings'
