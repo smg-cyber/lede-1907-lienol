@@ -19,7 +19,8 @@ rm -Rf package/utils/bcm27xx-userland
 rm -Rf package/lienol/luci-app-webrestriction
 rm -Rf package/lienol/luci-app-weburl
 rm -Rf package/lienol/luci-app-timewol
-#rm -Rf package/ctcgfw/open-app-filter
+rm -Rf package/ctcgfw/luci-app-adguardhome
+rm -Rf package/lean/luci-app-flowoffload
 cp -Rf ../diy-lean/* ./
 sed -i 's/OpenWrt/LedeWrt Std/g' package/lean/default-settings/files/zzz-default-settings
 
@@ -58,5 +59,7 @@ svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-
 svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-timewol package/luci-app-control-timewol
 svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-weburl package/luci-app-control-weburl
 #git clone -b lede https://github.com/pymumu/luci-app-smartdns  package/luci-app-smartdns
+#克隆flowoffload
+svn co https://github.com/Ameykyl/openwrt18.06/trunk/package/lean/luci-app-flowoffload package/uci-app-flowoffload
 ./scripts/feeds update -a
 ./scripts/feeds install -a
