@@ -48,8 +48,8 @@ sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1806-Std-/g' inclu
 #sed -i 's/net.netfilter.nf_conntrack_max=65535/net.netfilter.nf_conntrack_max=105535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 #添加自定义插件1
 #git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
-git clone https://github.com/rufengsuixing/luci-app-adguardhome.git  package/luci-app-adguardhome
-#git clone https://github.com/ledewrt/AdGuardHome.git package/luci-app-adguardhome
+#git clone https://github.com/rufengsuixing/luci-app-adguardhome.git  package/luci-app-adguardhome
+git clone https://github.com/ledewrt/AdGuardHome.git package/luci-app-adguardhome
 git clone https://github.com/ledewrt/luci-app-eqos.git  package/luci-app-eqos
 git clone https://github.com/jefferymvp/luci-app-koolproxyR.git  package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
