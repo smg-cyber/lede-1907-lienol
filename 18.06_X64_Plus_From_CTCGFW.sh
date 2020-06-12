@@ -45,8 +45,6 @@ sed -i 's/OpenWrt/LEDE/g' package/luci-theme-opentomcat/files/templates/header.h
 sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1806-Plus-/g' include/image.mk
 #选择编译内核。
 #sed -i 's/5.4/4.14/g' target/linux/x86/Makefile
-#螃蟹RTL8111/8168的网卡驱动
-git clone https://github.com/BROBIRD/openwrt-r8168.git  package/openwrt-r8168
 #修改网络连接数
 #sed -i 's/net.netfilter.nf_conntrack_max=65535/net.netfilter.nf_conntrack_max=105535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 #添加自定义插件1
