@@ -16,6 +16,7 @@ rm -Rf package/lean/luci-app-ssr-plus
 rm -Rf package/ntlf9t/luci-app-eqos
 #bcm27xx-userland为树莓派专用，需要移除
 rm -Rf package/utils/bcm27xx-userland
+rm -Rf package/feeds/packages/bcm27xx-eeprom
 rm -Rf package/lienol/luci-app-webrestriction
 rm -Rf package/lienol/luci-app-weburl
 rm -Rf package/lienol/luci-app-timewol
