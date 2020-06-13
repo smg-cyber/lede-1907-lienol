@@ -42,7 +42,7 @@ env:
   REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
   Free_Up_Disk: true
   SSH_Actions: false
-  Upload_Firmware_Artifact: true  
+  Upload_Firmware_Artifact: false  
   Upload_Firmware_Release: true
   TZ: Asia/Shanghai
 
