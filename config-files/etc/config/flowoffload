@@ -3,6 +3,4 @@ config flow
 	option bbr 'default'
 	option free_memory '0'
 	option filter_aaaa '0'
-	option dns '1'
-	option dnscache_enable '3'
-	option mem_mode '0'
+	option dns '0'
