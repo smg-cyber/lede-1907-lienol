@@ -22,7 +22,7 @@ config smartdns
 	option seconddns_no_dualstack_selection '1'
 	option force_aaaa_soa '1'
 	option redirect 'dnsmasq-upstream'
-	option ipv6_server '1'
+	option ipv6_server '0'
 	option dualstack_ip_selection '1'
 	option enabled '1'
 	list old_redirect 'dnsmasq-upstream'
