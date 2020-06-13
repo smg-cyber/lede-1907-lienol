@@ -43,7 +43,7 @@ env:
   Free_Up_Disk: true
   SSH_Actions: false
   Upload_Firmware_Artifact: true  
-  Upload_Firmware_Release: false
+  Upload_Firmware_Release: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -177,7 +177,7 @@ jobs:
             
             请分配不低于500M 的内存和存储空间 💾
         draft: false
-        prerelease: false     
+        prerelease: false
        
     #- name: Upload firmware for release
     #  uses: csexton/release-asset-action@master
