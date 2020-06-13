@@ -16,7 +16,7 @@ rm -Rf package/lean/luci-app-ssr-plus
 rm -Rf package/ntlf9t/luci-app-eqos
 #bcm27xx-userland为树莓派专用，需要移除
 rm -Rf package/utils/bcm27xx-userland
-rm -Rf package/feeds/packages/bcm27xx-eeprom
+rm -Rf package/feeds/packages/bcm27xx-eeprom/Makefile
 rm -Rf package/lienol/luci-app-webrestriction
 rm -Rf package/lienol/luci-app-weburl
 rm -Rf package/lienol/luci-app-timewol
@@ -61,6 +61,6 @@ svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-
 svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-weburl package/luci-app-control-weburl
 #git clone -b lede https://github.com/pymumu/luci-app-smartdns  package/luci-app-smartdns
 #克隆flowoffload
-svn co https://github.com/Ameykyl/openwrt18.06/trunk/package/lean/luci-app-flowoffload package/uci-app-flowoffload
+svn co https://github.com/Ameykyl/openwrt18.06/trunk/package/lean/luci-app-flowoffload package/luci-app-flowoffload
 ./scripts/feeds update -a
 ./scripts/feeds install -a
