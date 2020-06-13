@@ -49,7 +49,9 @@ sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1806-Plus-/g' incl
 #sed -i 's/net.netfilter.nf_conntrack_max=65535/net.netfilter.nf_conntrack_max=105535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 #添加自定义插件1
 #git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+#克隆复杂版adhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git  package/luci-app-adguardhome
+#克隆简单版adguardhome配合flowoffload使用
 git clone https://github.com/ledewrt/AdGuardHome.git package/AdGuardHome
 git clone https://github.com/ledewrt/luci-app-eqos.git  package/luci-app-eqos
 git clone https://github.com/jefferymvp/luci-app-koolproxyR.git  package/luci-app-koolproxyR
