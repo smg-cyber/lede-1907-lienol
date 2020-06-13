@@ -1,9 +1,7 @@
+
 config smartdns
-	option enabled '1'
-	option server_name 'smartdns'
 	option port '6053'
 	option prefetch_domain '1'
-	option redirect 'none'
 	option cache_size '5000'
 	option rr_ttl_min '300'
 	option rr_ttl_max '3600'
@@ -14,14 +12,22 @@ config smartdns
 	option seconddns_no_rule_nameserver '0'
 	option seconddns_no_rule_ipset '0'
 	option seconddns_no_rule_soa '0'
-	option seconddns_no_dualstack_selection '0'
 	option seconddns_no_cache '0'
 	option coredump '0'
-	option force_aaaa_soa '0'
+	option serve_expired '1'
 	option tcp_server '1'
+	option server_name 'china'
+	option seconddns_enabled '1'
+	option seconddns_server_group 'world'
+	option seconddns_no_dualstack_selection '1'
+	option force_aaaa_soa '1'
+	option redirect 'dnsmasq-upstream'
 	option ipv6_server '1'
 	option dualstack_ip_selection '1'
-	option serve_expired '1'
+	option enabled '1'
+	list old_redirect 'dnsmasq-upstream'
+	list old_port '6053'
+	list old_enabled '1'
 
 config server
 	option enabled '1'
@@ -29,12 +35,15 @@ config server
 	option name '百度'
 	option ip '180.76.76.76'
 	option blacklist_ip '1'
+	option server_group 'china'
+
 config server
 	option name '腾讯1'
 	option type 'udp'
 	option enabled '1'
 	option ip '119.29.29.29'
 	option blacklist_ip '1'
+	option server_group 'china'
 
 config server
 	option name '腾讯2'
@@ -42,6 +51,7 @@ config server
 	option enabled '1'
 	option ip '182.254.116.116'
 	option blacklist_ip '1'
+	option server_group 'china'
 
 config server
 	option name '阿里1'
@@ -49,6 +59,7 @@ config server
 	option enabled '1'
 	option ip '223.5.5.5'
 	option blacklist_ip '1'
+	option server_group 'china'
 
 config server
 	option name '阿里2'
@@ -56,6 +67,7 @@ config server
 	option enabled '1'
 	option ip '223.6.6.6'
 	option blacklist_ip '1'
+	option server_group 'china'
 
 config server
 	option name '114'
@@ -63,6 +75,7 @@ config server
 	option enabled '1'
 	option ip '114.114.114.114'
 	option blacklist_ip '1'
+	option server_group 'china'
 
 config server
 	option type 'tcp'
@@ -70,6 +83,7 @@ config server
 	option ip '210.0.255.250'
 	option blacklist_ip '0'
 	option name '香港环球全域电讯'
+	option server_group 'china'
 
 config server
 	option type 'udp'
@@ -77,12 +91,14 @@ config server
 	option ip '202.96.128.86'
 	option blacklist_ip '1'
 	option enabled '1'
+	option server_group 'china'
 
 config server
 	option name '台湾'
 	option ip '168.95.1.1'
 	option type 'tcp'
 	option enabled '1'
+	option server_group 'china'
 
 config server
 	option type 'tcp'
@@ -90,12 +106,14 @@ config server
 	option blacklist_ip '0'
 	option name '電訊盈科'
 	option enabled '1'
+	option server_group 'china'
 
 config server
 	option name '澳门'
 	option ip '202.175.82.46'
 	option type 'tcp'
 	option enabled '1'
+	option server_group 'china'
 
 config server
 	option name '红鱼'
@@ -103,6 +121,7 @@ config server
 	option type 'tls'
 	option enabled '1'
 	option blacklist_ip '1'
+	option server_group 'china'
 
 config server
 	option enabled '1'
@@ -116,12 +135,14 @@ config server
 	option name 'Yandex'
 	option ip '77.88.8.8'
 	option type 'tcp'
+	option server_group 'china'
 
 config server
 	option enabled '1'
 	option name '台湾 Quad101'
 	option ip '101.101.101.101'
 	option type 'tls'
+	option server_group 'china'
 
 config server
 	option enabled '1'
@@ -129,35 +150,41 @@ config server
 	option ip '203.198.7.66'
 	option type 'tcp'
 	option blacklist_ip '1'
+	option server_group 'china'
 
 config server
 	option enabled '1'
 	option name '新加坡DNS'
 	option ip '202.56.128.30'
 	option type 'tcp'
+	option server_group 'china'
 
 config server
 	option name 'Cloudflare'
 	option ip '1.1.1.1'
 	option type 'tls'
-	option enabled '0'
+	option server_group 'world'
+	option enabled '1'
 
 config server
 	option name 'opendns'
 	option ip '208.67.222.222'
 	option port '5353'
 	option type 'tcp'
-	option enabled '0'
+	option server_group 'world'
+	option enabled '1'
 
 config server
 	option name 'google'
 	option ip 'dns.google'
 	option type 'tls'
-	option enabled '0'
+	option server_group 'world'
+	option enabled '1'
 
 config server
 	option name 'IBM'
 	option ip 'dns.quad9.net'
 	option type 'tls'
-	option enabled '0'
-	
+	option server_group 'world'
+	option enabled '1'
+
