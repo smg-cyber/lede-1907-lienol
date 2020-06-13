@@ -62,7 +62,7 @@ svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-
 svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-timewol package/luci-app-control-timewol
 svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-weburl package/luci-app-control-weburl
 #git clone -b lede https://github.com/pymumu/luci-app-smartdns  package/luci-app-smartdns
-#克隆flowoffload
+#克隆Ameykyl的flowoffload，ctcgfw的folwoffload会导致adghome启动失败而且没有内存运行模式。
 svn co https://github.com/Ameykyl/openwrt18.06/trunk/package/lean/luci-app-flowoffload package/luci-app-flowoffload
 ./scripts/feeds update -a
 ./scripts/feeds install -a
