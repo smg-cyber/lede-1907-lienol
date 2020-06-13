@@ -21,7 +21,7 @@ rm -Rf package/lienol/luci-app-webrestriction
 rm -Rf package/lienol/luci-app-weburl
 rm -Rf package/lienol/luci-app-timewol
 rm -Rf package/ctcgfw/luci-app-adguardhome
-rm -Rf package/lean/luci-app-flowoffload
+#rm -Rf package/lean/luci-app-flowoffload
 cp -Rf ../diy-lean/* ./
 sed -i 's/OpenWrt/LedeWrt Plus/g' package/lean/default-settings/files/zzz-default-settings
 
@@ -51,8 +51,8 @@ sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1806-Plus-/g' incl
 #git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 #克隆复杂版adhome
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git  package/luci-app-adguardhome
-#克隆简单版adguardhome配合flowoffload使用
-git clone https://github.com/ledewrt/AdGuardHome.git package/AdGuardHome
+#克隆简单版adguardhome配合flowoffload使用(smartdns去广告，已停用)
+#git clone https://github.com/ledewrt/AdGuardHome.git package/AdGuardHome
 git clone https://github.com/ledewrt/luci-app-eqos.git  package/luci-app-eqos
 git clone https://github.com/jefferymvp/luci-app-koolproxyR.git  package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
@@ -63,6 +63,6 @@ svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-
 svn co https://github.com/ledewrt/openwrt-package/trunk/others/luci-app-control-weburl package/luci-app-control-weburl
 #git clone -b lede https://github.com/pymumu/luci-app-smartdns  package/luci-app-smartdns
 #克隆Ameykyl的flowoffload，ctcgfw的folwoffload会导致adghome启动失败而且没有内存运行模式。
-svn co https://github.com/Ameykyl/openwrt18.06/trunk/package/lean/luci-app-flowoffload package/luci-app-flowoffload
+#svn co https://github.com/Ameykyl/openwrt18.06/trunk/package/lean/luci-app-flowoffload package/luci-app-flowoffload
 ./scripts/feeds update -a
 ./scripts/feeds install -a
