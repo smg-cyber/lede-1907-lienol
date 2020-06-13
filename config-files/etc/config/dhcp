@@ -14,8 +14,8 @@ config dnsmasq
 	option localservice '1'
 	option cachesize '0'
 	option resolvfile '/tmp/resolv.conf.auto'
-	list server '127.0.0.1#5333'
-	option noresolv '1'
+	list server '127.0.0.1#6053'
+	option noresolv '0'
 
 config dhcp 'lan'
 	option interface 'lan'
@@ -29,6 +29,7 @@ config dhcp 'lan'
 	option ra_slaac '1'
 	list ra_flags 'managed-config'
 	list ra_flags 'other-config'
+	option ndp 'hybrid'
 
 config dhcp 'wan'
 	option interface 'wan'
