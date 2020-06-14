@@ -149,6 +149,7 @@ jobs:
         -or -name "*cjdns*" \
         -or -name "*cpulimit*" \
         -or -name "*diskman*" \
+        -or -name "*ddns*" \
         -or -name "*docker*" \
         -or -name "*frpc*" \
         -or -name "*frps*" \
