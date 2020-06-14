@@ -42,6 +42,7 @@ env:
   REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
   Free_Up_Disk: true
   SSH_Actions: false
+  UPLOAD_BIN_DIR_FOR_ARTIFACT: true 
   Upload_Firmware_Artifact: true  
   Upload_Firmware_Release: true
   TZ: Asia/Shanghai
@@ -125,7 +126,14 @@ jobs:
       id: date
       run: |   
        echo "::set-env name=date::$(date +'%Y%m%d%H%M')"
-      
+       
+    - name: Upload bin directory
+      uses: actions/upload-artifact@master
+      if: env.UPLOAD_BIN_DIR_FOR_ARTIFACT == 'true'
+      with:
+        name: OpenWrt_bin
+        path: lede/bin 
+
     - name: Organize files and zip
       id: organize
       run: |
