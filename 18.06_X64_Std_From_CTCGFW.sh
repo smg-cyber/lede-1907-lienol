@@ -23,7 +23,7 @@ rm -Rf package/lienol/luci-app-timewol
 rm -Rf package/ctcgfw/luci-app-adguardhome
 #rm -Rf package/lean/luci-app-flowoffload
 cp -Rf ../diy-lean/* ./
-sed -i 's/OpenWrt/LedeWrt Std/g' package/lean/default-settings/files/zzz-default-settings
+sed -i 's/OpenWrt/LedeWrt/g' package/lean/default-settings/files/zzz-default-settings
 
 # 修改默认IP为192.168.168.1
 #sed -i 's/192.168.1.1/192.168.168.1/g' package/base-files/files/bin/config_generate
@@ -42,7 +42,7 @@ rm -Rf package/ctcgfw/luci-theme-opentomcat
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat package/luci-theme-opentomcat
 sed -i 's/OpenWrt/LEDE/g' package/luci-theme-opentomcat/files/templates/header.htm
 #添加img编译时间前缀。
-sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1806-Std-/g' include/image.mk
+sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1806-/g' include/image.mk
 #选择编译内核。
 #sed -i 's/5.4/4.14/g' target/linux/x86/Makefile
 #修改网络连接数
