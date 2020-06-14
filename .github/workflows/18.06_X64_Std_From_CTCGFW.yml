@@ -152,6 +152,7 @@ jobs:
         -or -name "*docker*" \
         -or -name "*frpc*" \
         -or -name "*frps*" \
+        -or -name "*flowoffload*" \
         -or -name "*haproxy-tcp*" \
         -or -name "*hd-idle*" \
         -or -name "*ipsec-vpnd*" \
@@ -172,6 +173,7 @@ jobs:
         -or -name "*qbittorrent*" \
         -or -name "*rclone*" \
         -or -name "*serverchan*" \
+        -or -name "*sqm*" \
         -or -name "*softethervpn*" \
         -or -name "*ssr-plus*" \
         -or -name "*syncdial*" \
