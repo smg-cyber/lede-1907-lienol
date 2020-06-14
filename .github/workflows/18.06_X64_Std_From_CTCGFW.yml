@@ -77,8 +77,10 @@ jobs:
        # sudo -E apt-get -q purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
        # sudo -E apt-get -qq autoremove --purge
        # sudo -E apt-get -qq clean
+       
     - name: Clone source code
       run: git clone --depth 1 $Repo_Url -b $Repo_Branch lede
+      
     - name: Update feeds
       run: cd lede && ./scripts/feeds update -a
 
@@ -130,9 +132,60 @@ jobs:
       run: |
         rm -rf ./firmware/
         mkdir -p ./firmware/ 
-        find lede/bin/targets/*/*/*  -name "*sysupgrade*bin*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*combined*img*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*uefi-gpt-squashfs*img*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/targets/*/*/* -maxdepth 1 \
+        -name "*combined*img*" \
+        -or -name "*sysupgrade*bin*" \
+        -or -name "*uefi-gpt-squashfs*img*" \
+        -or -name "*combined*vmdk*" \ 
+        -or -name "*acme*" \
+        -or -name "*adbyby*" \
+        -or -name "*airplay2*" \
+        -or -name "*aliddns*" \
+        -or -name "*amule*" \  
+        -or -name "*aria2*" \
+        -or -name "*baidupcs-web*" \
+        -or -name "*chinadns*" \
+        -or -name "*cifs*" \
+        -or -name "*cjdns*" \
+        -or -name "*cpulimit*" \
+        -or -name "*diskman*" \
+        -or -name "*docker*" \
+        -or -name "*frpc*" \
+        -or -name "*frps*" \
+        -or -name "*haproxy-tcp*" \
+        -or -name "*hd-idle*" \
+        -or -name "*ipsec-vpnd*" \
+        -or -name "*ipsec-vpnserver-manyusers*" \
+        -or -name "*iptvhelper*" \
+        -or -name "*kcptun*" \
+        -or -name "*kodexplorer*" \
+        -or -name "*minidlna*" \
+        -or -name "*music-remote-center*" 
+        -or -name "*forked-daapd*" \
+        -or -name "*mwan3*" \
+        -or -name "*netdata*" \
+        -or -name "*nps*" \
+        -or -name "*openclash*" \
+        -or -name "*openvpn*" \
+        -or -name "*passwall*" \
+        -or -name "*pppoe*" \
+        -or -name "*qbittorrent*" \
+        -or -name "*rclone*" \
+        -or -name "*serverchan*" \
+        -or -name "*softethervpn*" \
+        -or -name "*ssr-plus*" \
+        -or -name "*syncdial*" \
+        -or -name "*transmission*" \
+        -or -name "*trojan-server*" \
+        -or -name "*udpxy*" \
+        -or -name "*unblockmusic*" \
+        -or -name "*v2ray-server*" \
+        -or -name "*vsftpd*" \
+        -or -name "*watchcat*" \
+        -or -name "*wrtbwmon*" \
+        -or -name "*xlnetacc*" \
+        -or -name "*zerotier*" \
+        | xargs -i mv -f {} ./firmware/
         #mv lede/.config  ./firmware/config.txt
         cd firmware
         echo "::set-env name=FIRMWARE::$(pwd)"
