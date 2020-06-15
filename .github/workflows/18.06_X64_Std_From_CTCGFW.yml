@@ -42,7 +42,7 @@ env:
   REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
   Free_Up_Disk: true
   SSH_Actions: false
-  UPLOAD_BIN_DIR_FOR_ARTIFACT: true 
+  UPLOAD_IPK_DIR_FOR_ARTIFACT: true 
   Upload_Firmware_Artifact: true  
   Upload_Firmware_Release: true
   TZ: Asia/Shanghai
@@ -78,6 +78,12 @@ jobs:
        # sudo -E apt-get -q purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
        # sudo -E apt-get -qq autoremove --purge
        # sudo -E apt-get -qq clean
+             
+    - name: Get current date
+      id: date
+      run: |   
+       echo "::set-env name=date::$(date +'%Y%m%d%H%M')"
+       echo "::set-env name=date2::$(date +'%Y%m%d%')"  
        
     - name: Clone source code
       run: git clone --depth 1 $Repo_Url -b $Repo_Branch lede
@@ -122,73 +128,92 @@ jobs:
         make -j$(nproc) || make -j1 V=s
         echo "::set-output name=status::success"
         
-    - name: Get current date
-      id: date
-      run: |   
-       echo "::set-env name=date::$(date +'%Y%m%d%H%M')"
+    - name: Upload IPK directory
+      uses: actions/upload-artifact@master
+      if: env.UPLOAD_IPK_DIR_FOR_ARTIFACT == 'true'
+      with:
+        name: LedeWrt18.06 x86 IPK
+        path: ./bin/packages/
 
     - name: Organize files and zip
       id: organize
       run: |
         rm -rf ./firmware/
         mkdir -p ./firmware/ 
-        find lede/bin/targets/*/*/*  -name "*sysupgrade*bin*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*combined*img*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*uefi-gpt-squashfs*img*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*combined-squashfs.vmdk*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*acme*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*adbyby*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*airplay2*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*aliddns*" | xargs -i mv -f {} ./firmware/ 
-        find lede/bin/targets/*/*/*  -name "*amule**" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*aria2" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*baidupcs-web*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*chinadns*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*cifs*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*cjdns*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*cpulimit*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*diskman*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*ddns*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*docker*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*frpc*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*frps*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*flowoffload*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*haproxy-tcp*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*hd-idle*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*ipsec-vpnd*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*ipsec-vpnserver-manyusers*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*iptvhelper*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*kcptun*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*kodexplorer*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*minidlna*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*forked-daapd*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*music-remote-center*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*mwan3*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*netdata*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*nps*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*openclash*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*openvpn*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*passwall*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*pppoe*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*qbittorrent*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*rclone*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*serverchan*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*sqm*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*softethervpn*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*ssr-plus*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*syncdial*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*transmission*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*trojan-server*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*udpxy*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*unblockmusic*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*v2ray-server*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*vsftpd*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*watchcat*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*wrtbwmon*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*xlnetacc*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*zerotier*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/targets/*/*  -name "*sysupgrade*bin*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/targets/*/*  -name "*combined*img*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/targets/*/*  -name "*uefi-gpt-squashfs*img*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/targets/*/*  -name "*combined-squashfs.vmdk*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*acme*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*adbyby*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*airplay2*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*aliddns*" | xargs -i mv -f {} ./firmware/ 
+        find lede/bin/packages/*/*  -name "*amule**" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*aria2" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*baidupcs-web*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*chinadns*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*cifs*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*cjdns*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*cpulimit*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*diskman*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*ddns*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*docker*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*frpc*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*frps*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*flowoffload*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*haproxy-tcp*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*hd-idle*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*ipsec-vpnd*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*ipsec-vpnserver-manyusers*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*iptvhelper*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*kcptun*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*kodexplorer*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*minidlna*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*forked-daapd*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*music-remote-center*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*mwan3*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*netdata*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*nps*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*openclash*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*openvpn*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*passwall*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*pppoe*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*qbittorrent*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*rclone*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*serverchan*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*sqm*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*softethervpn*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*ssr-plus*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*syncdial*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*transmission*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*trojan-server*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*udpxy*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*unblockmusic*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*v2ray-server*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*vsftpd*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*watchcat*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*wrtbwmon*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*xlnetacc*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*zerotier*" | xargs -i mv -f {} ./firmware/
         #mv lede/.config  ./firmware/config.txt
         cd firmware
+        rename -v "s/^openwrt/${{ env.date2 }}-ledewrt-1806-/" *combined*
+        zip -r luci-app-adbyby-plus.zip *adbyby* || true
+        zip -r luci-app-php-kodexplorer *kodexplorer* || true
+        zip -r luci-app-passwall.zip *passwall* *chinadns* *haproxy* || true
+        zip -r luci-app-baidupcs-web.zip *baidupcs* || true
+        zip -r luci-app-cifs-mount.zip *cifs-mount* || true
+        zip -r luci-app-music-remote-center.zip *music-remote-center* *forked-daapd* || true
+        zip -r luci-app-airplay2.zip *airplay2* || true
+        zip -r luci-app-openclash.zip *openclash* || true
+        zip -r luci-app-softethervpn.zip *softethervpn* || true
+        zip -r luci-app-syncdial.zip *syncdial* || true
+        zip -r luci-app-usb-printer.zip *usb-printer* || true
+        zip -r luci-app-verysync.zip *verysync* || true
+        zip -r luci-app-vsftpd.zip *vsftpd* || true
+        zip -r luci-app-xlnetacc.zip *xlnetacc* || true
+        zip -r luci-app-zerotier.zip *zerotier* || true
+        rm -Rf *.ipk
         echo "::set-env name=FIRMWARE::$(pwd)"
         echo "::set-output name=status::success"
         
