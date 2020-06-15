@@ -11,7 +11,6 @@
 # https://github.com/ledewrt
 # https://ledewrt.com
 #=================================================
-
 name:  18.06_X64_Std_From_CTCGFW_Firmware
 
 on: 
@@ -133,7 +132,7 @@ jobs:
       if: env.UPLOAD_IPK_DIR_FOR_ARTIFACT == 'true'
       with:
         name: LedeWrt18.06 x86 IPK
-        path: ./bin/packages/
+        path: lede/bin/packages/
 
     - name: Organize files and zip
       id: organize
