@@ -153,6 +153,7 @@ jobs:
         find lede/bin/packages/*/*  -name "*baidupcs-web*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*chinadns*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*cifs*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/packages/*/*  -name "*cifs-mount*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*cjdns*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*cpulimit*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*diskman*" | xargs -i mv -f {} ./firmware/
@@ -171,19 +172,16 @@ jobs:
         find lede/bin/packages/*/*  -name "*minidlna*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*forked-daapd*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*music-remote-center*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/packages/*/*  -name "*mwan3*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*netdata*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*nps*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*openclash*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*openvpn*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*passwall*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/packages/*/*  -name "*pppoe*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*qbittorrent*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*rclone*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*serverchan*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*sqm*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*softethervpn*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/packages/*/*  -name "*ssr-plus*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*syncdial*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*transmission*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*trojan-server*" | xargs -i mv -f {} ./firmware/
@@ -192,25 +190,58 @@ jobs:
         find lede/bin/packages/*/*  -name "*v2ray-server*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*vsftpd*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*watchcat*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/packages/*/*  -name "*wrtbwmon*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*xlnetacc*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*zerotier*" | xargs -i mv -f {} ./firmware/
         #mv lede/.config  ./firmware/config.txt
         cd firmware
         rename -v "s/^openwrt/${{ env.date2 }}-ledewrt-1806-/" *combined*
+        rename -v "s/^openwrt/${{ env.date2 }}-ledewrt-1806-/" *uefi-gpt-squashfs*
+        rename -v "s/^openwrt/${{ env.date2 }}-ledewrt-1806-/" *combined-squashfs.vmdk*
+        zip -r luci-app-acme.zip *acme* || true
         zip -r luci-app-adbyby-plus.zip *adbyby* || true
-        zip -r luci-app-php-kodexplorer *kodexplorer* || true
-        zip -r luci-app-passwall.zip *passwall* *chinadns* *haproxy* || true
-        zip -r luci-app-baidupcs-web.zip *baidupcs* || true
-        zip -r luci-app-cifs-mount.zip *cifs-mount* || true
-        zip -r luci-app-music-remote-center.zip *music-remote-center* *forked-daapd* || true
         zip -r luci-app-airplay2.zip *airplay2* || true
+        zip -r luci-app-aliddns.zip *aliddns* || true
+        zip -r luci-app-baidupcs-web.zip *baidupcs-web* || true
+        zip -r luci-app-chinadns.zip *chinadns* || true
+        zip -r luci-app-cifs.zip *cifs* || true
+        zip -r luci-app-cifs-mount.zip *cifs-mount* || true
+        zip -r luci-app-cjdns.zip *cjdns* || true
+        zip -r luci-app-cpulimit.zip *cpulimit* || true
+        zip -r luci-app-diskman.zip *diskman* || true
+        zip -r luci-app-ddns.zip *ddns* || true		
+        zip -r luci-app-docker.zip *docker* || true		
+        zip -r luci-app-frpc.zip *frpc* || true
+        zip -r luci-app-frps.zip *frps* || true
+        zip -r luci-app-flowoffload.zip *flowoffload* || true
+        zip -r luci-app-haproxy-tcp.zip *haproxy-tcp* || true
+        zip -r luci-app-hd-idle.zip *hd-idle* || true
+        zip -r luci-app-ipsec-vpnd.zip *ipsec-vpnd* || true
+        zip -r luci-app-ipsec-vpnserver-manyusers.zip *ipsec-vpnserver-manyusers* || true
+        zip -r luci-app-iptvhelper.zip *iptvhelper* || true
+        zip -r luci-app-kcptun.zip *kcptun* || true		
+        zip -r luci-app-kodexplorer.zip *kodexplorer* || true		
+        zip -r luci-app-minidlnazip *minidlna* || true
+        zip -r luci-app-music-remote-center.zip *music-remote-center* *forked-daapd* || true	
+        zip -r luci-app-mwan3.zip *mwan3* || true
+        zip -r luci-app-netdata.zip *netdata* || true
+        zip -r luci-app-nps.zip *nps* || true
         zip -r luci-app-openclash.zip *openclash* || true
+        zip -r luci-app-openvpn.zip *openvpn* || true
+        zip -r luci-app-passwall.zip *passwall* *chinadns* *haproxy* || true
+        zip -r luci-app-qbittorrent.zip *qbittorrent* || true
+        zip -r luci-app-rclone.zip *rclone* || true
+        zip -r luci-app-serverchan.zip *serverchan* || true
+        zip -r luci-app-sqm.zip *sqm* || true
         zip -r luci-app-softethervpn.zip *softethervpn* || true
         zip -r luci-app-syncdial.zip *syncdial* || true
-        zip -r luci-app-usb-printer.zip *usb-printer* || true
-        zip -r luci-app-verysync.zip *verysync* || true
+        zip -r luci-app-transmission.zip *transmission* || true
+        zip -r luci-app-trojan-server.zip *trojan-server* || true
+        zip -r luci-app-udpxy.zip *udpxy* || true		
+        zip -r luci-app-unblockmusic.zip *unblockmusic* || true
+        zip -r luci-app-v2ray-server.zip *v2ray-server* || true
         zip -r luci-app-vsftpd.zip *vsftpd* || true
+        zip -r luci-app-watchcat.zip *watchcat* || true
+        zip -r luci-app-v2ray-server.zip *v2ray-server* || true
         zip -r luci-app-xlnetacc.zip *xlnetacc* || true
         zip -r luci-app-zerotier.zip *zerotier* || true
         rm -Rf *.ipk
