@@ -198,7 +198,7 @@ jobs:
         #rename -v "s/^openwrt/${{ env.date2 }}-ledewrt-1806-/" *combined-squashfs.vmdk*
         zip -r luci-app-acme.zip *acme* || true
         zip -r luci-app-adbyby-plus.zip *adbyby* || true
-        zipzip -r luci-app-aliddns.zip *aliddns* || true
+        zip -r luci-app-aliddns.zip *aliddns* || true
         zip -r luci-app-baidupcs-web.zip *baidupcs-web* || true
         zip -r luci-app-chinadns.zip *chinadns* || true
         zip -r luci-app-cifs.zip *cifs* || true
