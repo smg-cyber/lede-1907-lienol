@@ -133,9 +133,9 @@ jobs:
         rm -rf ./firmware/
         mkdir -p ./firmware/ 
         find lede/bin/targets/*/*/*  -name "*sysupgrade*bin*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*combined*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/targets/*/*/*  -name "*combined*img*" | xargs -i mv -f {} ./firmware/
         find lede/bin/targets/*/*/*  -name "*uefi-gpt-squashfs*img*" | xargs -i mv -f {} ./firmware/
-        find lede/bin/targets/*/*/*  -name "*uefi-gpt-squashfs*img*" | xargs -i mv -f {} ./firmware/
+        find lede/bin/targets/*/*/*  -name "*combined-squashfs.vmdk*" | xargs -i mv -f {} ./firmware/
         find lede/bin/targets/*/*/*  -name "*acme*" | xargs -i mv -f {} ./firmware/
         find lede/bin/targets/*/*/*  -name "*adbyby*" | xargs -i mv -f {} ./firmware/
         find lede/bin/targets/*/*/*  -name "*airplay2*" | xargs -i mv -f {} ./firmware/
