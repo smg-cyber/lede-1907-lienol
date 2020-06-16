@@ -14,7 +14,7 @@
 rm -Rf package/default-settings/
 rm -Rf package/lean/luci-app-ssr-plus
 #rm -Rf package/OpenAppFilter
-cp -Rf ../diy-lienol/* ./
+cp -Rf ../diy-lean/* ./
 sed -i 's/OpenWrt/LedeWrt /g' package/lean/default-settings/files/zzz-default-settings
 #添加luci版本。
 sed -i 's/"18.06 Lienol"/"openwrt-19.07 branch "/g' feeds/luci/luci.mk
