@@ -1,6 +1,0 @@
-config flow
-	option flow_offloading '0'
-	option bbr 'default'
-	option free_memory '0'
-	option filter_aaaa '0'
-	option dns '0'
