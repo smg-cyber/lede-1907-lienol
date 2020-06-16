@@ -217,7 +217,8 @@ jobs:
         zip -r luci-app-kcptun.zip *kcptun* || true		
         zip -r luci-app-kodexplorer.zip *kodexplorer* || true		
         zip -r luci-app-minidlnazip *minidlna* || true
-        zip -r luci-app-music-remote-center.zip *music-remote-center* *forked-daapd* || true	
+        zip -r luci-app-music-remote-center.zip *music-remote-center* || true	
+        zip -r luci-app-music-remote-center.zip *forked-daapd* || true	
         zip -r luci-app-mwan3.zip *mwan3* || true
         zip -r luci-app-netdata.zip *netdata* || true
         zip -r luci-app-nps.zip *nps* || true
