@@ -13,6 +13,7 @@ uci set fstab.@global[0].anon_mount=1
 uci commit fstab
 
 uci set network.lan.ipaddr="192.168.168.1"
+uci set network.lan.netmask='255.255.255.0'
 uci set network.lan.ifname="eth0"
 uci set network.wan.ifname="eth1"
 uci commit network
@@ -21,7 +22,6 @@ rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/ddns.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/minidlna.htm
-
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/aria2.lua
 sed -i 's/services/nas/g' /usr/lib/lua/luci/view/aria2/overview_status.htm
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/hd_idle.lua
@@ -38,7 +38,6 @@ sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/nfs.lua
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/cifs.lua
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/qbittorrent.lua
 sed -i 's/services/nas/g'  /usr/lib/lua/luci/view/minidlna_status.htm
-
 sed -i 's/\"network\"/\"services\"/g' /usr/lib/lua/luci/controller/dnspod.lua
 #sed -i 's/\"services\"/\"QOS\"/g' /usr/lib/lua/luci/controller/qosv4.lua
 sed -i 's/\"network\"/\"control\"/g' /usr/lib/lua/luci/controller/eqos.lua
@@ -48,15 +47,14 @@ sed -i 's/\"network\"/\"control\"/g' /usr/lib/lua/luci/controller/eqos.lua
 sed -i 's/\"services\"/\"vpn\"/g' /usr/lib/lua/luci/controller/softethervpn5.lua
 sed -i 's/\"network\"/\"control\"/g' /usr/lib/lua/luci/controller/appfilter.lua
 
+
 ln -sf /sbin/ip /usr/bin/ip
 
-sed -i 's#http://downloads.openwrt.org#https://mirrors.cloud.tencent.com/lede#g' /etc/opkg/distfeeds.conf
-sed -i '/openwrt_luci/ { s/snapshots/releases\/18.06.8/g; }'  /etc/opkg/distfeeds.conf
-sed -i '/openwrt_packages/ { s/snapshots/releases\/18.06.8/g; }'  /etc/opkg/distfeeds.conf
-sed -i "s/# //g" /etc/opkg/distfeeds.conf
-
+sed -i 's/downloads.openwrt.org/openwrt.proxy.ustclug.org/g' /etc/opkg/distfeeds.conf
+sed -i 's/http/https/g' /etc/opkg/distfeeds.conf
 sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
-#sed -i 's|root:x:0:0:root:/root:/bin/ash|root:x:0:0:root:/root:/bin/bash|g' /etc/passwd
+
+sed -i "s/# //g" /etc/opkg/distfeeds.conf
 
 uci set dhcp.lan.ra='server'
 uci set dhcp.lan.dhcpv6='server'
@@ -65,33 +63,54 @@ uci set dhcp.lan.ra_default='1'
 uci commit dhcp
 
 sed -i '/REDIRECT --to-ports 53/d' /etc/firewall.user
-echo "#iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
-echo "#iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
+echo "iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
+echo "iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
 
 sed -i '/option disabled/d' /etc/config/wireless
 sed -i '/set wireless.radio${devidx}.disabled/d' /lib/wifi/mac80211.sh
 
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
-echo "DISTRIB_REVISION='E20.6.16 From Lean Modified By CTCGFW Team'" >> /etc/openwrt_release
+echo "DISTRIB_REVISION='N20.6.5 From Lienol'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release
 
-#sed -i 's/LuCI openwrt-18.06 branch/LuCI 18.06 by Lean/g' /usr/lib/lua/luci/version.lua
-#sed -i '/luciversion/d' /usr/lib/lua/luci/version.lua
-#echo 'luciversion = "Modified by CTCGFW Team "' >> /usr/lib/lua/luci/version.lua
+sed -i '/+kmod-crypto-arc4/d' package/lean/ksmbd/Makefile
 
-ssed -i '/log-facility/d' /etc/dnsmasq.conf
+sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
 sed -i 's/cbi.submit\"] = true/cbi.submit\"] = \"1\"/g' /usr/lib/lua/luci/dispatcher.lua
 
 echo 'hsts=0' > /root/.wgetrc
 
+/etc/init.d/xl2tpd stop
+/etc/init.d/xl2tpd disable
+/etc/init.d/mysqld stop
+/etc/init.d/mysqld disable
+/etc/init.d/tvheadend stop
+/etc/init.d/tvheadend disable
+/etc/init.d/dnsforwarder stop
+/etc/init.d/dnsforwarder disable
+/etc/init.d/vmtoolsd stop
+/etc/init.d/vmtoolsd disable
+#/etc/init.d/watchcat stop
+#/etc/init.d/watchcat disable
+/etc/init.d/dnscrypt-proxy stop
+/etc/init.d/dnscrypt-proxy disable
+/etc/init.d/igmpproxy stop
+/etc/init.d/igmpproxy disable
+/etc/init.d/redsocks2 stop
+/etc/init.d/redsocks2 disable
+/etc/init.d/banip stop
+/etc/init.d/banip disable
+/etc/init.d/udpxy enable
+/etc/init.d/udpxy stop
+/etc/init.d/wsdd2 stop
+/etc/init.d/v2ray_server stop
+/etc/init.d/samba4 stop
+/etc/init.d/samba stop
 rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
-
-mv /etc/openwrt_banner /etc/banner
-
 
 #禁用ipv6.
 #echo net.ipv6.conf.all.disable_ipv6=1 >> /etc/sysctl.conf
