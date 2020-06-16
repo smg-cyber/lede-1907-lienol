@@ -225,7 +225,7 @@ jobs:
         zip -r luci-app-openclash.zip *openclash* || true
         zip -r luci-app-openvpn.zip *openvpn* || true
         zip -r luci-app-passwall.zip *passwall*  || true
-        zip -r luci-app-passwall.zip *chinadns* || true
+        zip -r luci-app-chinadns.zip *chinadns* || true
         zip -r luci-app-haproxy.zip  *haproxy* || true
         zip -r luci-app-qbittorrent.zip *qbittorrent* || true
         zip -r luci-app-rclone.zip *rclone* || true
