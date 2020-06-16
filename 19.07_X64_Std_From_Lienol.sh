@@ -11,7 +11,7 @@
 # https://github.com/ledewrt
 #=================================================
 #添加固件版本描述。
-rm -Rf package/default-settings
+rm -Rf package/default-settings/files/zzz-default-settings
 rm -Rf package/lean/luci-app-ssr-plus
 #rm -Rf package/OpenAppFilter
 cp -Rf ../diy-lean/* ./
