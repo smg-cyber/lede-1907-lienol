@@ -34,7 +34,7 @@ git clone https://github.com/jefferymvp/luci-app-koolproxyR.git  package/luci-ap
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
-svn co https://github.com/solidus1983/luci-theme-opentomato/trunk/luci/themes/luci-theme-opentomato
+svn co https://github.com/solidus1983/luci-theme-opentomato/trunk/luci/themes/luci-theme-opentomato package/luci-theme-opentomato
 cd package
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall
 cd -
