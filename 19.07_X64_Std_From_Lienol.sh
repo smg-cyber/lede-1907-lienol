@@ -27,11 +27,6 @@ sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1907-/g' include/i
 #修改网络连接数
 #sed -i 's/net.netfilter.nf_conntrack_max=65535/net.netfilter.nf_conntrack_max=105535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 #添加自定义插件1。
-#克隆leo的
-rm -Rf package/ctcgfw/luci-theme-opentomcat
-git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat package/luci-theme-opentomcat
-sed -i 's/OpenWrt/LEDE/g' package/luci-theme-opentomcat/files/templates/header.htm
-#克隆Leo-Jo的helloword及主题
 git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 #git clone https://github.com/rufengsuixing/luci-app-adguardhome.git  package/luci-app-adguardhome
 git clone https://github.com/ledewrt/luci-app-eqos.git  package/luci-app-eqos
@@ -43,6 +38,5 @@ git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
 cd package
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall
 cd -
-
 ./scripts/feeds update -a
 ./scripts/feeds install -a
