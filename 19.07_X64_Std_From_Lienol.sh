@@ -11,11 +11,11 @@
 # https://github.com/ledewrt
 #=================================================
 #添加固件版本描述。
-#rm -Rf package/default-settings/files/zzz-default-settings
+rm -Rf package/default-settings/
 rm -Rf package/lean/luci-app-ssr-plus
 #rm -Rf package/OpenAppFilter
 cp -Rf ../diy-lienol/* ./
-sed -i 's/OpenWrt/LedeWrt /g' package/default-settings/files/zzz-default-settings
+sed -i 's/OpenWrt/LedeWrt /g' package/lean/default-settings/files/zzz-default-settings
 #添加luci版本。
 sed -i 's/"18.06 Lienol"/"openwrt-19.07 branch "/g' feeds/luci/luci.mk
 # 关闭禁止解析IPv6 DNS 记录
