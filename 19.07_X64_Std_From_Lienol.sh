@@ -46,4 +46,4 @@ cd -
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-chmod 777 /etc/smartdns/smartdns.sh
+chmod 777 /config-files/etc/smartdns/smartdns.sh
