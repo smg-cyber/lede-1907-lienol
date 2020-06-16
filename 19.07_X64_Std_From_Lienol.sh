@@ -33,7 +33,6 @@ git clone https://github.com/ledewrt/luci-app-eqos.git  package/luci-app-eqos
 git clone https://github.com/jefferymvp/luci-app-koolproxyR.git  package/luci-app-koolproxyR
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
-git clone -b lede https://github.com/pymumu/luci-app-smartdns  package/luci-app-smartdns
 git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
 svn co https://github.com/solidus1983/luci-theme-opentomato/trunk/luci/themes/luci-theme-opentomato
 cd package
