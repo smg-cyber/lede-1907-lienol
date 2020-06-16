@@ -11,13 +11,13 @@
 # https://github.com/ledewrt
 # https://ledewrt.com
 #=================================================
-name:  19.07_X64_Std_From_lienol_Firmware
+name:  19.07_X64_Std_From_Lienol_Firmware
 
 on: 
   #push:
     # 文件改变才会触发
        #paths:
-        #- 'diy-lean/package/lean/default-settings/files/zzz-default-settings'
+        #- 'diy-lienol/package/lean/default-settings/files/zzz-default-settings'
   # 分支master提交时触发
      # branches:
      #  - master     
@@ -218,7 +218,7 @@ jobs:
         zip -r luci-app-kodexplorer.zip *kodexplorer* || true		
         zip -r luci-app-minidlnazip *minidlna* || true
         zip -r luci-app-music-remote-center.zip *music-remote-center* || true	
-        zip -r luci-app-music-remote-center.zip *forked-daapd* || true	
+        zip -r luci-app-orked-daapd.zip *forked-daapd* || true	
         zip -r luci-app-mwan3.zip *mwan3* || true
         zip -r luci-app-netdata.zip *netdata* || true
         zip -r luci-app-nps.zip *nps* || true
@@ -226,7 +226,7 @@ jobs:
         zip -r luci-app-openvpn.zip *openvpn* || true
         zip -r luci-app-passwall.zip *passwall*  || true
         zip -r luci-app-passwall.zip *chinadns* || true
-        zip -r luci-app-passwall.zip  *haproxy* || true
+        zip -r luci-app-haproxy.zip  *haproxy* || true
         zip -r luci-app-qbittorrent.zip *qbittorrent* || true
         zip -r luci-app-rclone.zip *rclone* || true
         zip -r luci-app-serverchan.zip *serverchan* || true
