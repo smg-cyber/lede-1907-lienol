@@ -35,6 +35,7 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-ser
 #git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone -b lede https://github.com/pymumu/luci-app-smartdns  package/luci-app-smartdns
 git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
+svn co https://github.com/solidus1983/luci-theme-opentomato/trunk/luci/themes/luci-theme-opentomato
 cd package
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall
 cd -
