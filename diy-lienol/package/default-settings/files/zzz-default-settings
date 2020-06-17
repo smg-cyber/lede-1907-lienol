@@ -61,9 +61,9 @@ uci set dhcp.lan.ra='server'
 uci set dhcp.lan.dhcpv6='server'
 uci set dhcp.lan.ra_management='1'
 uci set dhcp.lan.ra_default='1'
-uci set dnsmasq.cachesize='0'
-
 uci commit dhcp
+
+sed -i '/6053'/a option cachesize '0'' /etc/config/dhcp
 
 sed -i '/REDIRECT --to-ports 53/d' /etc/firewall.user
 echo "#iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
