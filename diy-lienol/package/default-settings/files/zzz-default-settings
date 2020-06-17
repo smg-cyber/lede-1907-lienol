@@ -2,7 +2,7 @@
 touch /etc/crontabs/root
 
 uci set luci.main.lang=zh_cn
-uci set luci.main.mediaurlbase=/luci-static/opentomato
+uci set luci.main.mediaurlbase=/luci-static/bootstrap
 uci commit luci
 
 uci set system.@system[0].hostname=LEDE
