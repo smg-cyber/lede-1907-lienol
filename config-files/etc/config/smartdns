@@ -32,6 +32,14 @@ config smartdns
 config server
 	option enabled '1'
 	option type 'udp'
+	option name '改成自己网络服务商的DNS'
+	option ip '221.12.1.227'
+	option server_group 'china'
+	option blacklist_ip '0'
+
+config server
+	option enabled '1'
+	option type 'udp'
 	option name '百度'
 	option ip '180.76.76.76'
 	option blacklist_ip '1'
@@ -187,3 +195,4 @@ config server
 	option type 'tls'
 	option server_group 'world'
 	option enabled '1'
+
