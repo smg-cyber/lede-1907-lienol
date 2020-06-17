@@ -86,8 +86,6 @@ sed -i 's/cbi.submit\"] = true/cbi.submit\"] = \"1\"/g' /usr/lib/lua/luci/dispat
 
 echo 'hsts=0' > /root/.wgetrc
 
-chmod 777 /etc/smartdns/smartdns.sh
-
 /etc/init.d/xl2tpd stop
 /etc/init.d/xl2tpd disable
 /etc/init.d/mysqld stop
