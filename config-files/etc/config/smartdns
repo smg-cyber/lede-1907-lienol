@@ -24,7 +24,7 @@ config smartdns
 	option tcp_server '0'
 	option seconddns_port '7913'
 	option seconddns_tcp_server '0'
-	option dualstack_ip_selection '1'
+	option dualstack_ip_selection '0'
 	list old_redirect 'dnsmasq-upstream'
 	list old_port '6053'
 	list old_enabled '1'
