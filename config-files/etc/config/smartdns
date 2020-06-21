@@ -1,4 +1,3 @@
-
 config smartdns
 	option port '6053'
 	option prefetch_domain '1'
@@ -9,23 +8,22 @@ config smartdns
 	option server_name 'china'
 	option seconddns_enabled '1'
 	option seconddns_server_group 'world'
-	option seconddns_no_dualstack_selection '1'
 	option force_aaaa_soa '1'
-	option redirect 'dnsmasq-upstream'
 	option ipv6_server '0'
 	option enabled '1'
 	option seconddns_port '7913'
-	option dualstack_ip_selection '1'
 	option serve_expired '1'
 	option tcp_server '1'
-	option seconddns_tcp_server '1'
 	option seconddns_no_speed_check '1'
-	option seconddns_no_rule_addr '1'
-	option seconddns_no_rule_nameserver '1'
-	option seconddns_no_rule_ipset '1'
 	option seconddns_no_rule_soa '1'
 	option seconddns_no_cache '1'
-	list old_redirect 'dnsmasq-upstream'
+	option dualstack_ip_selection '0'
+	option redirect 'dnsmasq-upstream'
+	option seconddns_tcp_server '0'
+	option seconddns_no_rule_addr '0'
+	option seconddns_no_rule_nameserver '0'
+	option seconddns_no_rule_ipset '0'
+	option seconddns_no_dualstack_selection '0'
 	list old_port '6053'
 	list old_enabled '1'
 
@@ -169,22 +167,48 @@ config server
 config server
 	option name 'opendns'
 	option ip '208.67.222.222'
-	option port '5353'
 	option type 'tcp'
 	option server_group 'world'
 	option enabled '1'
 
 config server
-	option name 'google'
-	option ip 'dns.google'
-	option type 'tls'
+	option name 'opendns'
+	option ip '208.67.222.222'
+	option port '5353'
+	option server_group 'world'
+	option enabled '1'
+	option type 'udp'
+
+config server
+	option name 'opendns'
+	option ip 'https://doh.opendns.com/dns-query'
+	option type 'https'
 	option server_group 'world'
 	option enabled '1'
 
 config server
-	option name 'IBM'
-	option ip 'dns.quad9.net'
+	option name 'google'
 	option type 'tls'
 	option server_group 'world'
 	option enabled '1'
+	option ip '8.8.8.8'
+
+config server
+	option server_group 'world'
+	option enabled '1'
+	option ip '8.8.8.8'
+	option type 'tcp'
+	option name 'google'
+
+config server
+	option enabled '1'
+	option name 'google'
+	option ip 'https://dns.google/dns-query'
+	option type 'https'
+
+config server
+	option enabled '1'
+	option name 'IBM'
+	option ip 'dns.quad9.net'
+	option type 'tls'
 
