@@ -13,6 +13,7 @@
 #添加固件版本描述。
 rm -Rf package/default-settings/files/zzz-default-settings
 rm -Rf package/lean/luci-app-ssr-plus
+rm -Rf package/lean/luci-i18n-nlbwmon-zh-cn
 #rm -Rf package/OpenAppFilter
 cp -Rf ../diy-lienol/* ./
 sed -i 's/OpenWrt/LedeWrt/g' package/default-settings/files/zzz-default-settings
