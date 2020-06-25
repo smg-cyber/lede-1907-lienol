@@ -12,7 +12,7 @@ config dnsmasq
 	option leasefile '/tmp/dhcp.leases'
 	option nonwildcard '1'
 	option localservice '1'
-	list server '127.0.0.1#6053'
+	list server '127.0.0.1#5333'
 	option noresolv '1'
 	option cachesize '0'
 
