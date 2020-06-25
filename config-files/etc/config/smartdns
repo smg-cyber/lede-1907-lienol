@@ -19,7 +19,7 @@ config smartdns
 	option seconddns_no_rule_soa '1'
 	option seconddns_no_cache '1'
 	option dualstack_ip_selection '1'
-	option redirect 'dnsmasq-upstream'
+	option redirect 'none'
 	option seconddns_tcp_server '0'
 	option seconddns_no_rule_addr '0'
 	option seconddns_no_rule_nameserver '0'
