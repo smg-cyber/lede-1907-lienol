@@ -61,9 +61,9 @@ filters:
   url: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-easylist.txt
   name: anti-ad-easylist默认开第1个
   id: 1581953052
-- enabled: true
+- enabled: false
   url: https://gitee.com/halflife/list/raw/master/ad3.txt
-  name: AdFilters默认开第2个
+  name: AdFilters默认或者第2个
   id: 1593095159
 - enabled: false
   url: https://gitlab.com/xuhaiyang1234/AAK-Cont/raw/master/FINAL_BUILD/aak-cont-list-notubo.txt
