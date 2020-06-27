@@ -29,8 +29,6 @@ sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1907-/g' include/i
 #添加自定义插件1。
 git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git  package/luci-app-adguardhome
-#增加flowoffload里adguardhome选项
-sed -i 's/bbr/bbr +AdGuardHome/g' package/lean/luci-app-flowoffload/Makefile
 #克隆简单版adguardhome配合flowoffload使用。
 git clone https://github.com/ledewrt/AdGuardHome.git package/AdGuardHome
 git clone https://github.com/ledewrt/luci-app-eqos.git  package/luci-app-eqos
