@@ -7,7 +7,7 @@ language: ""
 rlimit_nofile: 0
 dns:
   bind_host: 0.0.0.0
-  port: 5553
+  port: 5333
   statistics_interval: 1
   protection_enabled: true
   filtering_enabled: true
