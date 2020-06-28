@@ -29,7 +29,7 @@ sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +%Y%m%d)-LEDE-1907-/g' include/i
 #添加自定义插件1。
 git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git  package/luci-app-adguardhome
-https://github.com/garypang13/openwrt-adguardhome.git package/openwrt-adguardhome
+git clone https://github.com/garypang13/openwrt-adguardhome.git package/openwrt-adguardhome
 sed -i '/resolvfile=/d' package/*/*/luci-app-adguardhome/root/etc/init.d/AdGuardHome
 sed -i 's/DEPENDS:=/DEPENDS:=+adguardhome /g' package/*/*/luci-app-adguardhome/Makefile
 
