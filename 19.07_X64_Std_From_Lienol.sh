@@ -47,3 +47,4 @@ cd -
 date=`date +%Y.%m.%d`
 sed -i "s/DISTRIB_DESCRIPTION.*/DISTRIB_DESCRIPTION='LedeWrt N%C From Lienol'/g" package/base-files/files/etc/openwrt_release
 sed -i "s/# REVISION:=x/REVISION:= $date/g" include/version.mk
+cp -f default-settings package/*/*/default-settings/files/zzz-default-settings
