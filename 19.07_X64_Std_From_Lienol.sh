@@ -15,7 +15,7 @@ rm -Rf package/default-settings/files/zzz-default-settings
 rm -Rf package/lean/luci-app-ssr-plus
 #rm -Rf package/OpenAppFilter
 cp -Rf ../diy-lienol/* ./
-sed -i 's/OpenWrt/LedeWrt/g' package/default-settings/files/zzz-default-settings
+#sed -i 's/OpenWrt/LedeWrt/g' package/default-settings/files/zzz-default-settings
 #添加luci版本。
 sed -i 's/"18.06 Lienol"/"openwrt-19.07 branch "/g' feeds/luci/luci.mk
 # 关闭禁止解析IPv6 DNS 记录
@@ -47,4 +47,4 @@ cd -
 date=`date +%Y.%m.%d`
 sed -i "s/DISTRIB_DESCRIPTION.*/DISTRIB_DESCRIPTION='LedeWrt N%C From Lienol'/g" package/base-files/files/etc/openwrt_release
 sed -i "s/# REVISION:=x/REVISION:= $date/g" include/version.mk
-cp -f default-settings package/*/*/default-settings/files/zzz-default-settings
+cp -f default-settings package/default-settings/files/zzz-default-settings
