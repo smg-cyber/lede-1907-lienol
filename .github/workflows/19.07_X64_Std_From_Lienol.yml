@@ -193,7 +193,7 @@ jobs:
         find lede/bin/packages/*/*  -name "*watchcat*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*xlnetacc*" | xargs -i mv -f {} ./firmware/
         find lede/bin/packages/*/*  -name "*zerotier*" | xargs -i mv -f {} ./firmware/
-        #mv lede/.config  ./firmware/config.txt
+        mv lede/.config  ./firmware/config.txt
         cd firmware
         zip -r luci-app-acme.zip *acme* || true
         zip -r luci-app-adbyby-plus.zip *adbyby* || true
