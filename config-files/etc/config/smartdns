@@ -18,7 +18,7 @@ config smartdns
 	option seconddns_no_speed_check '1'
 	option seconddns_no_rule_soa '1'
 	option seconddns_no_cache '1'
-	option dualstack_ip_selection '1'
+	option dualstack_ip_selection '0'
 	option redirect 'none'
 	option seconddns_tcp_server '0'
 	option seconddns_no_rule_addr '0'
