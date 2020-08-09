@@ -11,7 +11,7 @@ config smartdns
 	option seconddns_server_group 'world'
 	option force_aaaa_soa '1'
 	option ipv6_server '0'
-	option enabled '0'
+	option enabled '1'
 	option seconddns_port '7913'
 	option serve_expired '1'
 	option tcp_server '1'
